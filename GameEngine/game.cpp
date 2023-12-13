@@ -185,7 +185,7 @@ int main(int argc, char* args[])
 
 		// render the text
 		targetRectangle = SDL_Rect{
-			500,
+			200,
 			500,
 			textWidth,
 			textHeight
