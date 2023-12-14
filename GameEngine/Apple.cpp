@@ -6,26 +6,19 @@
 
 void Apple::Start(SDL_Renderer* renderer)
 {
-    loadedSurface = IMG_Load(imagePath);
-    appleTexture = SDL_CreateTextureFromSurface(renderer, loadedSurface);
+	loadedSurface = IMG_Load(imagePath);
+	appleTexture = SDL_CreateTextureFromSurface(renderer, loadedSurface);
 
-    x = rand()%1024;
+	rect.x = rand()%1024;
+	rect.y = rand() % 500;
 }
 
 void Apple::Update(float deltaTime)
 {
-    timer += deltaTime;
-
-    if (timer >= 1)
-    {
-        y++;
-        timer -= 1;
-    }
+	rect.y += fallSpeed * deltaTime;
 }
 
 void Apple::Render(SDL_Renderer* renderer)
 {
-    SDL_Rect appleRectangle{x,y,w,h};
-
-    SDL_RenderCopy(renderer, appleTexture, NULL, &appleRectangle);
+	SDL_RenderCopyF(renderer, appleTexture, NULL, &rect);
 }
