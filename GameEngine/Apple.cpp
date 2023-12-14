@@ -16,6 +16,11 @@ void Apple::Start(SDL_Renderer* renderer)
 void Apple::Update(float deltaTime)
 {
 	rect.y += fallSpeed * deltaTime;
+
+	if (rect.y >= 768 + rect.h)
+	{
+		exit(0);
+	}
 }
 
 void Apple::Render(SDL_Renderer* renderer)
